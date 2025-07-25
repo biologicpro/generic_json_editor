@@ -1,6 +1,10 @@
-# Game JSON Tools
+# Generic JSON Tools
 
 This is a simple web application that allows you to configure JSON files with color palette suggestions from an image.
+
+# Vibe Developed using Gemini-flash-2.5 with reference to
+
+to The JSON editor https://github.com/slaugaus/visual-json-editor-vscode
 
 ## How to run the application
 
