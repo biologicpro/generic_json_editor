@@ -51,7 +51,7 @@ function App() {
       <ImageColorPalette onPaletteSelect={handlePaletteSelect} />
       <RandomColorGenerator onColorGenerate={handleColorGenerate} />
       <NipponColorPalette onPaletteSelect={handlePaletteSelect} />
-      {template && <JsonEditor data={template} onDataChange={handleDataChange} selectedColor={selectedColor} />}
+      {template && <JsonEditor data={template} onDataChange={handleDataChange} />}
     </div>
   );
 }

@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { SketchPicker } from 'react-color';
 
-const JsonEditor = ({ data, onDataChange, selectedColor }) => {
+const JsonEditor = ({ data, onDataChange }) => {
   const colorRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+  const [displayColorPicker, setDisplayColorPicker] = useState(false);
+  const [currentColor, setCurrentColor] = useState('#fff');
+  const [currentKey, setCurrentKey] = useState(null);
 
-  const handleColorClick = (key) => {
-    if (selectedColor) {
-      const newData = { ...data };
-      const keys = key.split('.');
-      let current = newData;
-      for (let i = 0; i < keys.length - 1; i++) {
-        current = current[keys[i]];
-      }
-      current[keys[keys.length - 1]] = selectedColor;
-      onDataChange(newData);
+  const handleColorClick = (color, key) => {
+    setCurrentColor(color);
+    setCurrentKey(key);
+    setDisplayColorPicker(!displayColorPicker);
+  };
+
+  const handleColorChange = (color) => {
+    const newData = { ...data };
+    const keys = currentKey.split('.');
+    let current = newData;
+    for (let i = 0; i < keys.length - 1; i++) {
+      current = current[keys[i]];
     }
+    current[keys[keys.length - 1]] = color.hex;
+    onDataChange(newData);
   };
 
   const renderJson = (jsonData, parentKey = '') => {
@@ -44,7 +52,7 @@ const JsonEditor = ({ data, onDataChange, selectedColor }) => {
                 border: '1px solid black',
                 cursor: 'pointer'
               }}
-              onClick={() => handleColorClick(currentPath)}
+              onClick={() => handleColorClick(value, currentPath)}
             ></div>
           )}
         </div>
@@ -52,7 +60,17 @@ const JsonEditor = ({ data, onDataChange, selectedColor }) => {
     });
   };
 
-  return <div>{renderJson(data)}</div>;
+  return (
+    <div>
+      {renderJson(data)}
+      {displayColorPicker && (
+        <div style={{ position: 'absolute', zIndex: '2' }}>
+          <div style={{ position: 'fixed', top: '0px', right: '0px', bottom: '0px', left: '0px' }} onClick={() => setDisplayColorPicker(false)}/>
+          <SketchPicker color={currentColor} onChange={handleColorChange} />
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default JsonEditor;
