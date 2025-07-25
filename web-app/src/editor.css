@@ -340,3 +340,21 @@ input[type="color"] {
 ::-webkit-color-swatch-wrapper {
     padding: 0;
 }
+
+.app-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+.left-pane {
+  flex: 1; /* Takes up equal space */
+  padding: 20px;
+  overflow-y: auto; /* Scroll if content overflows */
+  border-right: 1px solid #424242; /* Separator */
+}
+
+.right-pane {
+  flex: 1; /* Takes up equal space */
+  padding: 20px;
+  overflow-y: auto; /* Scroll if content overflows */
+}

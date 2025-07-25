@@ -44,14 +44,19 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Game JSON Tools</h1>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleSave}>Save to Local</button>
-      <ImageColorPalette onPaletteSelect={() => {}} /> {/* No longer directly used by editor */}
-      <RandomColorGenerator onColorGenerate={() => {}} /> {/* No longer directly used by editor */}
-      <NipponColorPalette onPaletteSelect={() => {}} /> {/* No longer directly used by editor */}
-      {template && <JsonEditorV2 data={template} onDataChange={handleDataChange} />}
+    <div className="app-container">
+      <div className="left-pane">
+        <h1>Game JSON Tools</h1>
+        <input type="file" onChange={handleFileChange} />
+        <button onClick={handleSave}>Save to Local</button>
+        {template && <JsonEditorV2 data={template} onDataChange={handleDataChange} />}
+      </div>
+      <div className="right-pane">
+        <h2>Color Tools</h2>
+        <ImageColorPalette onPaletteSelect={() => {}} />
+        <RandomColorGenerator onColorGenerate={() => {}} />
+        <NipponColorPalette onPaletteSelect={() => {}} />
+      </div>
     </div>
   );
 }

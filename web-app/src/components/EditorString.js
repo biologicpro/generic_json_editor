@@ -4,7 +4,7 @@ const EditorString = ({ value, onValueChange }) => {
   const [currentValue, setCurrentValue] = useState(value);
 
   const handleChange = (e) => {
-    setCurrentValue(e.target.value);
+    setCurrentValue(e.target.textContent);
   };
 
   const handleBlur = () => {
