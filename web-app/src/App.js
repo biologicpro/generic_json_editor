@@ -3,11 +3,12 @@ import { getTemplate } from './services/TemplateService';
 import JsonEditorV2 from './components/JsonEditorV2';
 import './editor.css';
 import ImageColorPalette from './components/ImageColorPalette';
-import RandomColorGenerator from './components/RandomColorGenerator';
+import ColorTools from './components/ColorTools';
 import NipponColorPalette from './components/NipponColorPalette';
 
 function App() {
   const [template, setTemplate] = useState(null);
+
   useEffect(() => {
     const fetchTemplate = async () => {
       const data = await getTemplate('weirdo.json');
@@ -43,6 +44,38 @@ function App() {
     }
   };
 
+  const findColorPaths = (obj, currentPath = [], colorPaths = []) => {
+    for (const key in obj) {
+      const newPath = [...currentPath, key];
+      if (typeof obj[key] === 'string' && /^#([0-9A-Fa-f]{3}){1,2}$/.test(obj[key])) {
+        colorPaths.push(newPath);
+      } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+        findColorPaths(obj[key], newPath, colorPaths);
+      }
+    }
+    return colorPaths;
+  };
+
+  const handleRandomlyAssignNipponColors = async () => {
+    const response = await fetch('/nippon-colors.json');
+    const nipponColors = await response.json();
+    const colorHexes = nipponColors.map(color => `#${color.color}`);
+
+    const newTemplate = JSON.parse(JSON.stringify(template)); // Deep copy
+    const colorPaths = findColorPaths(newTemplate);
+
+    colorPaths.forEach(path => {
+      let current = newTemplate;
+      for (let i = 0; i < path.length - 1; i++) {
+        current = current[path[i]];
+      }
+      const randomColor = colorHexes[Math.floor(Math.random() * colorHexes.length)];
+      current[path[path.length - 1]] = randomColor;
+    });
+
+    setTemplate(newTemplate);
+  };
+
   return (
     <div className="app-container">
       <div className="left-pane">
@@ -54,7 +87,7 @@ function App() {
       <div className="right-pane">
         <h2>Color Tools</h2>
         <ImageColorPalette onPaletteSelect={() => {}} />
-        <RandomColorGenerator onColorGenerate={() => {}} />
+        <ColorTools onColorGenerate={() => {}} onRandomlyAssignNipponColors={handleRandomlyAssignNipponColors} />
         <NipponColorPalette onPaletteSelect={() => {}} />
       </div>
     </div>
