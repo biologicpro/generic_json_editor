@@ -1,0 +1,36 @@
+{
+  "id": "ocean",
+  "name": "Ocean Breeze",
+  "description": "Calming ocean-inspired theme with blue tones",
+  "colors": {
+    "background": "#0f1419",
+    "gameBoard": "#1a2332",
+    "tileDefault": "#2d3748",
+    "tileCorrect": "#38a169",
+    "tilePresent": "#d69e2e",
+    "tileAbsent": "#4a5568",
+    "text": "#e2e8f0",
+    "textSecondary": "#a0aec0",
+    "accent": "#4299e1",
+    "border": "#2d3748",
+    "success": "#38a169",
+    "warning": "#d69e2e",
+    "error": "#e53e3e",
+    "buttonBackground": "#4299e1",
+    "buttonText": "#ffffff"
+  },
+  "fonts": {
+    "primary": "Arial",
+    "secondary": "Arial",
+    "tileSize": 32,
+    "uiSize": 16,
+    "titleSize": 36
+  },
+  "ui": {
+    "buttonStyle": "rounded",
+    "panelStyle": "gradient",
+    "borderRadius": 8,
+    "shadowEnabled": true,
+    "animationStyle": "smooth"
+  }
+}

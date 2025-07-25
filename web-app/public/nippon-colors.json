@@ -1,0 +1,122 @@
+[
+  {
+    "name": "NADESHIKO",
+    "kanji": "撫子",
+    "hex": "#DC9FB4",
+    "rgb": "220-159-180"
+  },
+  {
+    "name": "KOHBAI",
+    "kanji": "紅梅",
+    "hex": "#E16B8C",
+    "rgb": "225-107-140"
+  },
+  {
+    "name": "SUOH",
+    "kanji": "蘇芳",
+    "hex": "#8E354A",
+    "rgb": "142-53-74"
+  },
+  {
+    "name": "TAIKOH",
+    "kanji": "退紅",
+    "hex": "#F8C3CD",
+    "rgb": "248-195-205"
+  },
+  {
+    "name": "IKKONZOME",
+    "kanji": "一斥染",
+    "hex": "#F4A7B9",
+    "rgb": "244-167-185"
+  },
+  {
+    "name": "KUWAZOME",
+    "kanji": "桑染",
+    "hex": "#64363C",
+    "rgb": "100-54-60"
+  },
+  {
+    "name": "MOMO",
+    "kanji": "桃",
+    "hex": "#F596AA",
+    "rgb": "245-150-170"
+  },
+  {
+    "name": "ICHIGO",
+    "kanji": "苺",
+    "hex": "#B5495B",
+    "rgb": "181-73-91"
+  },
+  {
+    "name": "USUBENI",
+    "kanji": "薄紅",
+    "hex": "#E87A90",
+    "rgb": "232-122-144"
+  },
+  {
+    "name": "IMAYOH",
+    "kanji": "今様",
+    "hex": "#D05A6E",
+    "rgb": "208-90-110"
+  },
+  {
+    "name": "NAKABENI",
+    "kanji": "中紅",
+    "hex": "#DB4D6D",
+    "rgb": "219-77-109"
+  },
+  {
+    "name": "SAKURA",
+    "kanji": "桜",
+    "hex": "#FEDFE1",
+    "rgb": "254-223-225"
+  },
+  {
+    "name": "UMENEZUMI",
+    "kanji": "梅鼠",
+    "hex": "#9E7A7A",
+    "rgb": "158-122-122"
+  },
+  {
+    "name": "KARAKURENAI",
+    "kanji": "韓紅花",
+    "hex": "#D0104C",
+    "rgb": "208-16-76"
+  },
+  {
+    "name": "ENJI",
+    "kanji": "燕脂",
+    "hex": "#9F353A",
+    "rgb": "159-53-58"
+  },
+  {
+    "name": "KURENAI",
+    "kanji": "紅",
+    "hex": "#CB1B45",
+    "rgb": "203-27-69"
+  },
+  {
+    "name": "TOKI",
+    "kanji": "鴇",
+    "hex": "#EEA9A9",
+    "rgb": "238-169-169"
+  },
+  {
+    "name": "CYOHSYUN",
+    "kanji": "長春",
+    "hex": "#BF6766",
+    "rgb": "191-103-102"
+  },
+  {
+    "name": "KOKIAKE",
+    "kanji": "深緋",
+    "hex": "#86473F",
+    "rgb": "134-71-63"
+  },
+  {
+    "name": "SAKURANEZUMI",
+    "kanji": "桜鼠",
+    "hex": "#B19693",
+    "rgb": "177-150-147"
+  }
+]
