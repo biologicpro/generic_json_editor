@@ -10,25 +10,30 @@ const NipponColorPalette = ({ onPaletteSelect }) => {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '10px' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: '10px', marginTop: '10px' }}>
       {colors.map((color, index) => (
         <div
           key={index}
           style={{
-            backgroundColor: color.hex,
-            width: '50px',
-            height: '50px',
+            backgroundColor: `#${color.color}`,
+            width: '80px',
+            height: '80px',
             cursor: 'pointer',
-            margin: '5px',
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
             color: 'white',
-            textShadow: '1px 1px 1px black'
+            textShadow: '1px 1px 1px black',
+            borderRadius: '5px',
+            textAlign: 'center',
+            fontSize: '0.8em'
           }}
-          onClick={() => onPaletteSelect(color.hex)}
+          onClick={() => onPaletteSelect(`#${color.color}`)}
         >
-          {color.name}
+          <span>{color.name}</span>
+          <span>{color.cname}</span>
+          <span>#{color.color}</span>
         </div>
       ))}
     </div>
