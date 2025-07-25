@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { getTemplate } from './services/TemplateService';
-import JsonEditor from './components/JsonEditor';
+import JsonEditorV2 from './components/JsonEditorV2';
+import './editor.css';
 import ImageColorPalette from './components/ImageColorPalette';
 import RandomColorGenerator from './components/RandomColorGenerator';
 import NipponColorPalette from './components/NipponColorPalette';
 
 function App() {
   const [template, setTemplate] = useState(null);
-  const [selectedColor, setSelectedColor] = useState(null);
+  useEffect(() => {
+    const fetchTemplate = async () => {
+      const data = await getTemplate('weirdo.json');
+      setTemplate(data);
+    };
+
+    fetchTemplate();
+  }, []);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -21,14 +29,6 @@ function App() {
 
   const handleDataChange = (newData) => {
     setTemplate(newData);
-  };
-
-  const handlePaletteSelect = (color) => {
-    setSelectedColor(color);
-  };
-
-  const handleColorGenerate = (color) => {
-    setSelectedColor(color);
   };
 
   const handleSave = () => {
@@ -48,10 +48,10 @@ function App() {
       <h1>Game JSON Tools</h1>
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleSave}>Save to Local</button>
-      <ImageColorPalette onPaletteSelect={handlePaletteSelect} />
-      <RandomColorGenerator onColorGenerate={handleColorGenerate} />
-      <NipponColorPalette onPaletteSelect={handlePaletteSelect} />
-      {template && <JsonEditor data={template} onDataChange={handleDataChange} />}
+      <ImageColorPalette onPaletteSelect={() => {}} /> {/* No longer directly used by editor */}
+      <RandomColorGenerator onColorGenerate={() => {}} /> {/* No longer directly used by editor */}
+      <NipponColorPalette onPaletteSelect={() => {}} /> {/* No longer directly used by editor */}
+      {template && <JsonEditorV2 data={template} onDataChange={handleDataChange} />}
     </div>
   );
 }
