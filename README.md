@@ -6,6 +6,8 @@ This is a simple web application that allows you to configure JSON files with co
 
 to The JSON editor https://github.com/slaugaus/visual-json-editor-vscode
 
+![App](screen.jpeg)
+
 ## How to run the application
 
 1.  Navigate to the `web-app` directory:
