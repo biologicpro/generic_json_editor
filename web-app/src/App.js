@@ -8,11 +8,13 @@ import NipponColorPalette from './components/NipponColorPalette';
 
 function App() {
   const [template, setTemplate] = useState(null);
+  const [currentFilename, setCurrentFilename] = useState(null);
 
   useEffect(() => {
     const fetchTemplate = async () => {
       const data = await getTemplate('weirdo.json');
       setTemplate(data);
+      setCurrentFilename('weirdo.json');
     };
 
     fetchTemplate();
@@ -24,6 +26,7 @@ function App() {
     reader.onload = (event) => {
       const data = JSON.parse(event.target.result);
       setTemplate(data);
+      setCurrentFilename(file.name);
     };
     reader.readAsText(file);
   };
@@ -38,6 +41,18 @@ function App() {
       const downloadAnchorNode = document.createElement('a');
       downloadAnchorNode.setAttribute("href",     dataStr);
       downloadAnchorNode.setAttribute("download", "template.json");
+      document.body.appendChild(downloadAnchorNode); // required for firefox
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+    }
+  };
+
+  const handleSaveBack = () => {
+    if (template && currentFilename) {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(template, null, 2));
+      const downloadAnchorNode = document.createElement('a');
+      downloadAnchorNode.setAttribute("href", dataStr);
+      downloadAnchorNode.setAttribute("download", currentFilename);
       document.body.appendChild(downloadAnchorNode); // required for firefox
       downloadAnchorNode.click();
       downloadAnchorNode.remove();
@@ -82,6 +97,9 @@ function App() {
         <h1>Game JSON Tools</h1>
         <input type="file" onChange={handleFileChange} />
         <button onClick={handleSave}>Save to Local</button>
+        {currentFilename && (
+          <button onClick={handleSaveBack}>Save Back to {currentFilename}</button>
+        )}
         {template && <JsonEditorV2 data={template} onDataChange={handleDataChange} />}
       </div>
       <div className="right-pane">
